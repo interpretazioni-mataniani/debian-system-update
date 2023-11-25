@@ -1,0 +1,19 @@
+---
+- hosts: your-host
+  gather_facts: no
+  become: yes
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    ansible_sudo_pass: "{{ ANSIBLE_SUDO_PASS }}"
+  
+  tasks:    
+    - name: Update all installed packages using APT module
+      ansible.builtin.apt:
+        name: '*'
+        state: latest
+        update_cache: yes
+        only_upgrade: yes
+
+    - name: Remove packages not needed anymore
+      ansible.builtin.apt:
+        autoremove: yes
