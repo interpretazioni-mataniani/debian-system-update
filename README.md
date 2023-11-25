@@ -1,4 +1,4 @@
-# debian-system-update
+# Debian System Update pipeline
 This is a simple Ansible-based Action to update a Debian system I created to practice CI/CD pipelines.
 
 
